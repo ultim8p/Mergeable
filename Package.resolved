@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CodableUtils",
+        "repositoryURL": "https://github.com/ultim8p/CodableUtils",
+        "state": {
+          "branch": null,
+          "revision": "81eac7fda428fa78ccfb7e2c97142335c4da8935",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
