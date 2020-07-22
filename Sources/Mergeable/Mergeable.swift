@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Objects that need to support merging
+/// Conform to this protocol to support Merging.
 public protocol Mergeable: Codable {
-    mutating func merge<T: Mergeable>(_ type: T.Type, with obj: T) -> T?
+    mutating func merge<T: Mergeable>(with obj: T, idKey: String) -> T?
 }
