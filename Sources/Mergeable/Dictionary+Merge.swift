@@ -33,20 +33,20 @@ public extension Dictionary {
             } else if let valArray = val as? [[String: Any]] {
                 /// If its an array of objects with ids, perform an upsert operation for each object,
                 /// else replace the whole object with the new array of objects
-                if valArray.hasIds(idKey: idKey) {
-                    var selfDicts = self[key] as? [[String: Any]] ?? []
-                    guard let changes = selfDicts.merge(with: valArray, idKey: idKey) else { continue }
-                    if let selfDictsVal = selfDicts as? Value {
-                        if let changesVal = changes as? Value {
-                            firstLvlChangesDict[key] = changesVal
-                        }
-                        self[key] = selfDictsVal
-                    }
-                } else {
+//                if valArray.hasIds(idKey: idKey) {
+//                    var selfDicts = self[key] as? [[String: Any]] ?? []
+//                    guard let changes = selfDicts.merge(with: valArray, idKey: idKey) else { continue }
+//                    if let selfDictsVal = selfDicts as? Value {
+//                        if let changesVal = changes as? Value {
+//                            firstLvlChangesDict[key] = changesVal
+//                        }
+//                        self[key] = selfDictsVal
+//                    }
+//                } else {
                     if let valArrayVal = valArray as? Value {
                         self[key] = valArrayVal
                     }
-                }
+//                }
             } else if let currentValue = self[key]  {
                 if String(describing: currentValue) != String(describing: val) {
                     firstLvlChangesDict[key] = val
