@@ -24,6 +24,31 @@ final class MergeableTests: XCTestCase {
         XCTAssertNotNil(changes)
     }
     
+    func testBuild() {
+        let obj = TestModel(_id: "01", name: "Lila", code: 4, base: nil, date: nil, status: 6)
+        let chageKeys: Set<String> = ["name", "code", "base"]
+        let objBuilt = obj.buld(with: chageKeys)
+        XCTAssertEqual(objBuilt?._id, obj._id)
+        XCTAssertEqual(objBuilt?.name, obj.name)
+        XCTAssertEqual(objBuilt?.code, obj.code)
+        XCTAssertNil(objBuilt?.base)
+        XCTAssertNil(objBuilt?.status)
+    }
+    
+    func testBuildEmptyChangeKeys() {
+        let obj = TestModel(_id: "01", name: "Lila", code: 4, base: nil, date: nil, status: 6)
+        let chageKeys: Set<String> = []
+        let objBuilt = obj.buld(with: chageKeys)
+        XCTAssertNil(objBuilt)
+    }
+    
+    func testBuildInvalidChangeKeys() {
+        let obj = TestModel(_id: "01", name: "Lila", code: 4, base: nil, date: nil, status: 6)
+        let chageKeys: Set<String> = ["tre"]
+        let objBuilt = obj.buld(with: chageKeys)
+        XCTAssertNotNil(objBuilt)
+    }
+    
     static var allTests = [
         ("testMerge", testMerge),
     ]
